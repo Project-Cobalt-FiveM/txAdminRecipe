@@ -1,0 +1,197 @@
+$engine: 3
+$minFxVersion: 38004
+$onesync: on
+name: Project Cobalt
+version: 1.0.0
+author: Project Cobalt
+description: A FiveM roleplay framework built as one piece. Sets up every Cobalt resource, its dependencies and a ready server.cfg on MariaDB.
+
+tasks:
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    ref: master
+    subpath: resources
+    dest: ./tmp/cfx-server-data
+  - action: move_path
+    src: ./tmp/cfx-server-data/[managers]/mapmanager
+    dest: ./resources/[cfx-default]/mapmanager
+  - action: move_path
+    src: ./tmp/cfx-server-data/[managers]/spawnmanager
+    dest: ./resources/[cfx-default]/spawnmanager
+  - action: move_path
+    src: ./tmp/cfx-server-data/[system]/baseevents
+    dest: ./resources/[cfx-default]/baseevents
+
+  - action: download_github
+    src: https://github.com/overextended/cfxlua-require
+    ref: v1.0.2
+    dest: ./resources/[ox]/require
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/ox_lib
+    ref: main
+    dest: ./resources/[ox]/ox_lib
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/ox_target
+    ref: main
+    dest: ./resources/[ox]/ox_target
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/ox_fuel
+    ref: main
+    dest: ./resources/[ox]/ox_fuel
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/ox_doorlock
+    ref: main
+    dest: ./resources/[ox]/ox_doorlock
+
+  - action: download_github
+    src: https://github.com/AvarianKnight/pma-voice
+    ref: main
+    dest: ./resources/[standalone]/pma-voice
+  - action: download_file
+    url: https://github.com/itschip/screencapture/releases/download/v0.17.2/screencapture.zip
+    path: ./tmp/screencapture.zip
+  - action: unzip
+    src: ./tmp/screencapture.zip
+    dest: ./resources/[standalone]
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/bob74_ipl
+    ref: main
+    dest: ./resources/[standalone]/bob74_ipl
+  - action: download_github
+    src: https://github.com/qbcore-framework/hospital_map
+    ref: main
+    dest: ./resources/[standalone]/hospital_map
+  - action: download_github
+    src: https://github.com/qbcore-framework/dealer_map
+    ref: main
+    dest: ./resources/[standalone]/dealer_map
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/illenium-appearance
+    ref: main
+    dest: ./resources/[standalone]/illenium-appearance
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/npwd
+    ref: main
+    dest: ./resources/[standalone]/npwd
+  - action: write_file
+    file: ./resources/[standalone]/npwd/.yarn.installed
+    data: "installed"
+
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_mysql
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_mysql
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_core
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_core
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_map
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_map
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_interfaces
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_interfaces
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_sound
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_sound
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_loading
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_loading
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_hud
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_hud
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_chat
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_chat
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_inventory
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_inventory
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_banking
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_banking
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_management
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_management
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_housing
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_housing
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_weather
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_weather
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_multicharacter
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_multicharacter
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_vehiclekeys
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_vehiclekeys
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_garages
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_garages
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_dealership
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_dealership
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_mechanic
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_mechanic
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_cityhall
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_cityhall
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_police
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_police
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_ambulancejob
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_ambulancejob
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_crime
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_crime
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_addons
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_addons
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/cobalt_adminmenu
+    ref: main
+    dest: ./resources/[cobalt]/cobalt_adminmenu
+
+  - action: download_github
+    src: https://github.com/Project-Cobalt-FiveM/txAdminRecipe
+    ref: main
+    dest: ./tmp/recipe
+  - action: move_path
+    src: ./tmp/recipe/server.cfg
+    dest: ./server.cfg
+  - action: move_path
+    src: ./tmp/recipe/logo.png
+    dest: ./logo.png
+  - action: remove_path
+    path: ./tmp
+
+  - action: connect_database
+  - action: replace_string
+    mode: all_vars
+    file: ./server.cfg
+  - action: replace_string
+    file: ./server.cfg
+    search: " group.admin #"
+    replace: " group.owner #"
